@@ -17,3 +17,21 @@
 }
 
 @source "../node_modules/flowbite-svelte/dist";
+
+:root {
+    --navbar-height: 3.5rem;
+}
+
+.navbar {
+    position: relative;
+    z-index: 9999;
+    height: var(--navbar-height);
+}
+
+.map {
+    width: 100vw;
+    height: calc(100vh - var(--navbar-height));
+    position: absolute;
+    top: var(--navbar-height);
+    left: 0;
+}

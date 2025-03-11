@@ -1,7 +1,9 @@
 <script lang="ts">
 		import { store } from "../store.svelte";
+		import Map from "../components/Map.svelte";
 </script>
 
-<h1>This is EasyMap</h1>
-<p>Status: {store.error}</p>
+<Map></Map>
+
+
 
