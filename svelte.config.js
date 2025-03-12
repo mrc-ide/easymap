@@ -16,8 +16,7 @@ const config = {
 			strict: true,
 		}),
 		paths: {
-			//base: process.argv.includes("dev") ? "" : process.env.BASE_PATH
-			base: "/easymap",
+			base: process.argv.includes("dev") ? "" : process.env.BASE_PATH,
 			relative: false
 		}
 	}
