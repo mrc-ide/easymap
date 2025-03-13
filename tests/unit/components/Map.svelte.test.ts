@@ -32,7 +32,6 @@ vi.doMock("leaflet", () => {
 });
 
 describe("Map", () => {
-
 	test("initialises leaflet as expected", async () => {
 		await render(Map);
 		await waitForOnMount();

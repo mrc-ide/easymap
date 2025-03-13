@@ -9,6 +9,5 @@ export const init: ClientInit = async () => {
 		store.error = `Error fetching app config`;
 	} else {
 		store.appConfig = await response.json() as AppConfig;
-		console.log(JSON.stringify(store.appConfig));
 	}
 };
