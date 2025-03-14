@@ -7,7 +7,7 @@ on:
         branches:
             - "*"
 jobs:
-    setup:
+    build-and-test:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -21,22 +21,16 @@ jobs:
 
             - name: Install dependencies
               run: npm ci
-    test:
-        needs: setup
-        runs-on: ubuntu-latest
-        steps:
+
             - name: Unit tests
               run: npm run test:unit
 
             - name: Install playwright
               run: npx playwright install --with-deps
-            - name: E2E tests
 
+            - name: E2E tests
               run: npm run test:e2e
-    lint:
-        needs: setup
-        runs-on: ubuntu-latest
-        steps:
+
             - name: Lint
               run: npm run lint
 
