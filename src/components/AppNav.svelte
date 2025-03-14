@@ -1,8 +1,8 @@
 <script>
-	import { page } from '$app/state';
-	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte';
-	import { store } from '../store.svelte.js';
-	import { base } from '$app/paths';
+	import { page } from "$app/state";
+	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from "flowbite-svelte";
+	import { store } from "../store.svelte.js";
+	import { base } from "$app/paths";
 </script>
 
 <Navbar rounded class="navbar" color="form" let:hidden let:toggle>

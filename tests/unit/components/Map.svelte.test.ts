@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/svelte';
-import { describe, expect, test, vi } from 'vitest';
+import { render, screen } from "@testing-library/svelte";
+import { describe, expect, test, vi } from "vitest";
 import Map from "../../../src/components/Map.svelte";
-import { waitForOnMount } from '../utils';
+import { waitForOnMount } from "../utils";
 
 const mockBounds = {
 	min: { x: 0, y: 0 },

@@ -1,4 +1,4 @@
-import type { AppConfig } from './types';
+import type { AppConfig } from "./types";
 
 export interface Store {
 	error: null | string

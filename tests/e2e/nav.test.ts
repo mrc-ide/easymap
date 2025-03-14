@@ -1,4 +1,4 @@
-import { expect, test, Page } from '@playwright/test';
+import { expect, test, Page } from "@playwright/test";
 
 const expectToSeeMap = async (page: Page) => {
 	// Just a really basic test that Leaflet has been populated with the base layer
@@ -9,10 +9,10 @@ const expectToSeeMap = async (page: Page) => {
 
 test.describe("Playwright navigation", () => {
 	test.beforeEach(async ({page}) => {
-		await page.goto('/');
+		await page.goto("/");
 	});
 
-	test('can see nav menu', async ({ page }) => {
+	test("can see nav menu", async ({ page }) => {
 		await expect(page.getByRole("link", {name: "EasyMap"})).toBeVisible();
 		const home = page.getByRole("link", {name: "Home"});
 		await expect(home).toBeVisible();

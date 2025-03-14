@@ -1,6 +1,6 @@
-import { describe, test, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, test, expect, beforeEach, afterEach, vi } from "vitest";
 import { http, HttpResponse } from "msw";
-import { setupServer } from 'msw/node';
+import { setupServer } from "msw/node";
 import { init } from "../../src/hooks.client";
 
 const mockConfig = { appTitle: "Test Title" };

@@ -52,5 +52,21 @@
 		"flowbite-svelte": "^0.48.4",
 		"leaflet": "^1.9.4",
 		"tailwind-merge": "^3.0.2"
+	},
+	"prettier": {
+		"semi": true,
+		"tabWidth": 4,
+		"singleQuote": false,
+		"printWidth": 120,
+		"trailingComma": "none",
+		"plugins": ["prettier-plugin-svelte", "prettier-plugin-tailwindcss"],
+		"overrides": [
+			{
+				"files": "*.svelte",
+				"options": {
+					"parser": "svelte"
+				}
+			}
+		]
 	}
 }
