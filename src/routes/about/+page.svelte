@@ -1,3 +1,1 @@
-<p>
-	Placeholder About page for EasyMap
-</p>
+<p>Placeholder About page for EasyMap</p>

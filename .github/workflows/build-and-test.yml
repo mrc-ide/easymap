@@ -1,44 +1,44 @@
 name: Build and Test
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - '*'
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - "*"
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    setup:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.x
-          cache: npm
+            - name: Install Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22.x
+                  cache: npm
 
-      - name: Install dependencies
-        run: npm ci
-  test:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - name: Unit tests
-        run: npm run test:unit
+            - name: Install dependencies
+              run: npm ci
+    test:
+        needs: setup
+        runs-on: ubuntu-latest
+        steps:
+            - name: Unit tests
+              run: npm run test:unit
 
-      - name: Install playwright
-        run: npx playwright install --with-deps
-      - name: E2E tests
+            - name: Install playwright
+              run: npx playwright install --with-deps
+            - name: E2E tests
 
-        run: npm run test:e2e
-  lint:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - name: Lint
-        run: npm run lint
+              run: npm run test:e2e
+    lint:
+        needs: setup
+        runs-on: ubuntu-latest
+        steps:
+            - name: Lint
+              run: npm run lint
 
-      - name: Format
-        run: npm run format-check
+            - name: Format
+              run: npm run format-check
