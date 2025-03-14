@@ -29,7 +29,20 @@ The `msw` package is used to allow mocking of http requests.
 Playwright e2e tests are in `tests/e2e`. Run e2e tests with `npm run test:e2e`.
 
 ## Linting and formatting
-- todo: separate linting and formatting, and separate write and check scripts for each
+
+We use eslint for linting and prettier for formatting. 
+
+To run without making auto-fixes:
+```
+npm run lint
+npm run format-check
+```
+
+To run with auto-fixes:
+```
+npm run lint-fix
+npm run format-write
+```
 
 ## Deployment
 
