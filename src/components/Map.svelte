@@ -10,7 +10,7 @@
         L = await import("leaflet");
         map = L.map("map", {
             maxBoundsViscosity: 1.0 // prevent any dragging outside max bounds
-        }).setView({ lon: 0, lat: 0 }, 3);
+        }).setView({ lng: 0, lat: 0 }, 3);
         map.options.minZoom = 3;
         map.setMaxBounds(map.getBounds());
 
