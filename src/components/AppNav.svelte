@@ -13,7 +13,7 @@
     </NavBrand>
     <NavHamburger on:click={toggle} />
     <NavUl activeUrl={page.url.pathname} {hidden}>
-        <NavLi href="{base}/" active={true}>Home</NavLi>
+        <NavLi href="{base}/">Home</NavLi>
         <NavLi href="{base}/about">About</NavLi>
     </NavUl>
 </Navbar>
