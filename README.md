@@ -10,7 +10,7 @@ It is written in Typescript, using [Svelte](https://svelte.dev/sveltekit) and [S
 with component library [Flowbite Svelte](https://flowbite-svelte.com/).
 
 SvelteKit is a helpful framework for developing Svelte apps. Like Nuxt.js, it provides support for server-side
-integration, as well as useful features for the front end, like routing. Because EasyMap is only, we configure
+integration, as well as useful features for the front end, like routing. Because EasyMap is client-only, we configure
 SvelteKit to build using its [static adapter](https://svelte.dev/docs/kit/adapter-static), so that no code needs to run
 on the server.
 
@@ -26,7 +26,7 @@ You can then preview the production build with `npm run preview`.
 Unit tests are in the `tests/unit` folder. Run unit tests with `npm run test:unit`.
 The `msw` package is used to allow mocking of http requests.
 
-Playwright e2e tests are in `tests/e2e`. Run e2e tests with `npm run test:e2e`.
+Playwright e2e tests are in `tests/e2e`. Run e2e tests with `npm run test:e2e` while the app is running locally.
 
 ## Linting and formatting
 

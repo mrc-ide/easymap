@@ -8,7 +8,7 @@
 <Navbar rounded class="navbar" color="form" let:hidden let:toggle>
     <NavBrand href="{base}/">
         <span class="self-center text-xl font-bold whitespace-nowrap text-gray-900 dark:text-white">
-            {store.appConfig?.appTitle}
+            {store.appConfig?.appTitle || "EasyMap" }
         </span>
     </NavBrand>
     <NavHamburger on:click={toggle} />
