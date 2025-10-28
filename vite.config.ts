@@ -7,7 +7,7 @@ export default defineConfig({
     plugins: [tailwindcss(), sveltekit()],
 
     test: {
-        workspace: [
+        projects: [
             {
                 extends: "./vite.config.ts",
                 plugins: [svelteTesting()],
@@ -16,16 +16,17 @@ export default defineConfig({
                     environment: "jsdom",
                     clearMocks: true,
                     include: ["tests/unit/**/**.{test,spec}.{js,ts}"],
-                    exclude: ["src/lib/server/**"],
                     setupFiles: ["./vitest-setup-client.ts"]
                 }
             }
         ]
     },
-    // Tell Vitest to use the `browser` entry points in `package.json` files, even though it's running in Node
-    resolve: process.env.VITEST
-        ? {
-              conditions: ["browser"]
-          }
-        : undefined
+		resolve: {
+			// Bit of hacky grossness to get around "Error:  No known conditions for "./node" specifier in "msw" package"
+			// which crept in for some reason
+			alias: [
+				{ find: "msw/node", replacement: "/node_modules/msw/lib/native/index.mjs"}
+			],
+			conditions: process.env.VITEST ? ["browser"] : undefined
+		}
 });
