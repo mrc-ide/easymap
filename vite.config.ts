@@ -21,12 +21,10 @@ export default defineConfig({
             }
         ]
     },
-		resolve: {
-			// Bit of hacky grossness to get around "Error:  No known conditions for "./node" s
-			// pecifier in "msw" package" which crept in for some reason
-			alias: [
-				{ find: "msw/node", replacement: "/node_modules/msw/lib/native/index.mjs"}
-			],
-			conditions: process.env.VITEST ? ["browser"] : undefined
-		}
+    resolve: {
+        // Bit of hacky grossness to get around "Error:  No known conditions for "./node" s
+        // pecifier in "msw" package" which crept in for some reason
+        alias: [{ find: "msw/node", replacement: "/node_modules/msw/lib/native/index.mjs" }],
+        conditions: process.env.VITEST ? ["browser"] : undefined
+    }
 });
