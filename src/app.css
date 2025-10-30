@@ -35,3 +35,10 @@
     top: var(--navbar-height);
     left: 0;
 }
+
+.project-menuz {
+    z-index: 9999;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+}
