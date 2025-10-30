@@ -11,10 +11,10 @@
 	const handleClick = (e) => {
 		// toggle related dialog
 		const dialog = e.detail.dialog;
-		if (store.openProjetDialog === dialog) {
-			store.openProjetDialog = null;
+		if (store.openProjectDialog === dialog) {
+			store.openProjectDialog = null;
 		} else if (store.enabledProjectDialogs.has(dialog)) {
-			store.openProjetDialog = dialog;
+			store.openProjectDialog = dialog;
 		}
 	};
 </script>

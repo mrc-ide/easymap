@@ -1,0 +1,17 @@
+<script lang="ts">
+	import { Modal, Accordion, AccordionItem } from 'flowbite-svelte';
+	import { store } from '../../store.svelte';
+	import { ProjectDialog } from '../../types';
+	import LoadFile from './LoadFile.svelte';
+
+	let isOpen = $derived(store.openProjectDialog == ProjectDialog.Setup);
+</script>
+
+<Modal title="Set up your EasyMap project." bind:open={isOpen} modal={false} class="absolute top-20 left-20 m-0 z-9999">
+	<Accordion>
+		<AccordionItem open>
+			{#snippet header()}1. Open file{/snippet}
+			<LoadFile/>
+		</AccordionItem>
+	</Accordion>
+</Modal>
