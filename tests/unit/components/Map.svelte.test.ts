@@ -23,11 +23,18 @@ const mockTileLayer = {
 
 const mockMapConstructor = vi.fn().mockImplementation(() => mockMap);
 const mockTileLayerConstructor = vi.fn().mockImplementation(() => mockTileLayer);
+const mockAddTo = vi.fn();
+const mockControlZoom = vi.fn().mockImplementation(() => ({
+	addTo: mockAddTo
+}));
 
 vi.doMock("leaflet", () => {
     return {
         map: mockMapConstructor,
-        tileLayer: mockTileLayerConstructor
+        tileLayer: mockTileLayerConstructor,
+			  control: {
+					zoom: mockControlZoom
+				}
     };
 });
 
@@ -36,7 +43,7 @@ describe("Map", () => {
         await render(Map);
         await waitForOnMount();
 
-        expect(mockMapConstructor).toHaveBeenCalledWith("map", { maxBoundsViscosity: 1 });
+        expect(mockMapConstructor).toHaveBeenCalledWith("map", { maxBoundsViscosity: 1, zoomControl: false });
         expect(mockMap.setView).toHaveBeenCalled();
         expect(mockMap.setMaxBounds).toHaveBeenCalledWith(mockBounds);
         expect(mockTileLayerConstructor).toHaveBeenCalled();

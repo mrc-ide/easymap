@@ -13,8 +13,9 @@
 	};
 </script>
 
-<Label>Select a data file (csv or single sheet Excel file).</Label>
-<Fileupload accept=".csv, .xls, .xlsx" onchange={loadFile} class="my-2" />
+<div>
+<Label for="file-select">Select a data file (csv or single sheet Excel file).</Label>
+<Fileupload id="file-select" accept=".csv, .xls, .xlsx" onchange={loadFile} class="my-2" />
 {#if store.errors.loadFile}
 	<Helper class="text-red-600">File load error: {store.errors.loadFile}</Helper>
 {:else if store.warnings.loadFile}
@@ -22,3 +23,4 @@
 {:else if store.dataFile}
 	<Helper>Loaded file with columns: {store.dataFile.columns}.</Helper>
 {/if}
+</div>

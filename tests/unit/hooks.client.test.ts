@@ -16,8 +16,10 @@ const { mockSetError, mockSetConfig } = vi.hoisted(() => ({
 }));
 
 vi.mock("../../src/store.svelte.ts", () => {
-    const mockStore = {};
-    Object.defineProperty(mockStore, "error", { set: mockSetError });
+    const mockStore = {
+			errors: {}
+		};
+    Object.defineProperty(mockStore.errors, "fetch", { set: mockSetError });
     Object.defineProperty(mockStore, "appConfig", { set: mockSetConfig });
     return { store: mockStore };
 });
@@ -39,7 +41,7 @@ describe("Client hooks", () => {
         expect(mockSetError).not.toHaveBeenCalled();
     });
 
-    test("inits sets error if cannot fetch config", async () => {
+    test("init sets error if cannot fetch config", async () => {
         server.use(
             http.get("./easymap.config.json", () => {
                 return HttpResponse("oh no", { status: 500 });
