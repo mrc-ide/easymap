@@ -8,7 +8,9 @@ export class DataFile {
 
 	constructor(buffer: ArrayBuffer) {
 		try {
-			const workbook = XLSX.read(buffer);
+			const workbook = XLSX.read(buffer
+				, {type: "buffer"}
+			);
 			if (workbook.SheetNames.length > 1) {
 				this._loadWarning = "This file has multiple sheets";
 			}
@@ -24,6 +26,7 @@ export class DataFile {
 		}
 		catch(e) {
 			this._loadError = e.message;
+			throw e;
 		}
 	}
 

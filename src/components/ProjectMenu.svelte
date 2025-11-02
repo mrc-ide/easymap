@@ -4,6 +4,7 @@
 	import { ProjectDialog } from '../types';
 	import { store } from '../store.svelte.js';
 
+	// TODO: make these a bit bigger with Listgroupitems
 	let buttons = $derived([
 		{ Icon: CogOutline, dialog: ProjectDialog.Setup, disabled: !store.enabledProjectDialogs.has(ProjectDialog.Setup) },
 		{ Icon: DownloadOutline, dialog: ProjectDialog.Download, disabled: !store.enabledProjectDialogs.has(ProjectDialog.Download) }

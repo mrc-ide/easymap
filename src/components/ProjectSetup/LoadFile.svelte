@@ -4,6 +4,7 @@
 	import { store } from '../../store.svelte';
 
 	const loadFile = async (e) => {
+		// TODO: set better filtype on upload component
 		const file = e.target.files[0];
 		const data = await file.arrayBuffer();
 		const dataFile = new DataFile(data);

@@ -13,6 +13,7 @@
 <Modal title="Set up your EasyMap project."
 			 bind:open={isOpen}
 			 modal={false}
+			 size="md"
 			 class="absolute top-20 left-20 m-0 z-9999"
 			 onclose={handleClose}>
 	<Accordion>
