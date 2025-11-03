@@ -6,8 +6,18 @@
 
 	// TODO: make these a bit bigger with Listgroupitems
 	let buttons = $derived([
-		{ Icon: CogOutline, dialog: ProjectDialog.Setup, disabled: !store.enabledProjectDialogs.has(ProjectDialog.Setup) },
-		{ Icon: DownloadOutline, dialog: ProjectDialog.Download, disabled: !store.enabledProjectDialogs.has(ProjectDialog.Download) }
+		{
+			Icon: CogOutline,
+			dialog: ProjectDialog.Setup,
+			disabled: !store.enabledProjectDialogs.has(ProjectDialog.Setup),
+			"aria-label": "Set up project"
+		},
+		{
+			Icon: DownloadOutline,
+			dialog: ProjectDialog.Download,
+			disabled: !store.enabledProjectDialogs.has(ProjectDialog.Download),
+			"aria-label": "Download data"
+		}
 	]);
 	const handleClick = (e) => {
 		// toggle related dialog
@@ -20,4 +30,4 @@
 	};
 </script>
 
-<Listgroup active items="{buttons}" onclick={handleClick} class="absolute top-20 left-4 w-14 z-9999" />
+<Listgroup active items={buttons} onclick={handleClick} class="absolute top-20 left-4 w-14 z-9999" />

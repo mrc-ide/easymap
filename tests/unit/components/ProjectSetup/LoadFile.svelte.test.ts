@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 import LoadFile from "../../../../src/components/ProjectSetup/LoadFile.svelte";
 import { fireEvent, render, screen, waitFor } from '@testing-library/svelte';
-import { getTestFile } from './utils';
+import { getTestFile } from '../../utils';
 import type { DataFile } from '$lib/DataFile';
 
 let { mockStore } = vi.hoisted(() => ({

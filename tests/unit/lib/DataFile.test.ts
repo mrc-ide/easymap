@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { getArrayBufferForTestFile } from '../components/ProjectSetup/utils';
+import {  getArrayBufferForTestFile } from '../utils';
 import { DataFile } from '$lib/DataFile';
 
 describe("DataFile", () => {
