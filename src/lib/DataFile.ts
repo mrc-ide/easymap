@@ -26,7 +26,6 @@ export class DataFile {
 		}
 		catch(e) {
 			this._loadError = e.message;
-			throw e;
 		}
 	}
 
