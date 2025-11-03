@@ -22,6 +22,6 @@
 {:else if store.warnings.loadFile}
 	<Helper class="text-orange-600">File load warning: {store.warnings.loadFile}</Helper>
 {:else if store.dataFile}
-	<Helper>Loaded file with columns: {store.dataFile.columns}.</Helper>
+	<Helper>Loaded file with columns: {store.dataFile.columns.join(", ")}.</Helper>
 {/if}
 </div>
