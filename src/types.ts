@@ -3,6 +3,6 @@ export interface AppConfig {
 }
 
 export enum ProjectDialog {
-	Setup,
-	Download
+    Setup,
+    Download
 }

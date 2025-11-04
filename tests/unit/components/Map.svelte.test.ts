@@ -25,16 +25,16 @@ const mockMapConstructor = vi.fn().mockImplementation(() => mockMap);
 const mockTileLayerConstructor = vi.fn().mockImplementation(() => mockTileLayer);
 const mockAddTo = vi.fn();
 const mockControlZoom = vi.fn().mockImplementation(() => ({
-	addTo: mockAddTo
+    addTo: mockAddTo
 }));
 
 vi.doMock("leaflet", () => {
     return {
         map: mockMapConstructor,
         tileLayer: mockTileLayerConstructor,
-			  control: {
-					zoom: mockControlZoom
-				}
+        control: {
+            zoom: mockControlZoom
+        }
     };
 });
 

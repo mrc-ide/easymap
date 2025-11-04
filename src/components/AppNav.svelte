@@ -6,14 +6,14 @@
 </script>
 
 <Navbar rounded class="navbar" color="form" fluid="true">
-    <NavBrand href={resolve('/')}>
-        <span class="text-xl font-bold whitespace-nowrap text-primary-600 dark:text-white pb-2 ">
+    <NavBrand href={resolve("/")}>
+        <span class="text-primary-600 pb-2 text-xl font-bold whitespace-nowrap dark:text-white">
             {store.appConfig?.appTitle || "EasyMap"}
         </span>
     </NavBrand>
     <NavHamburger />
     <NavUl activeUrl={page.url.pathname}>
-        <NavLi href={resolve('/')}>Home</NavLi>
-        <NavLi href={resolve('/about')}>About</NavLi>
+        <NavLi href={resolve("/")}>Home</NavLi>
+        <NavLi href={resolve("/about")}>About</NavLi>
     </NavUl>
 </Navbar>

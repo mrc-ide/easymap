@@ -17,8 +17,8 @@ const { mockSetError, mockSetConfig } = vi.hoisted(() => ({
 
 vi.mock("../../src/store.svelte.ts", () => {
     const mockStore = {
-			errors: {}
-		};
+        errors: {}
+    };
     Object.defineProperty(mockStore.errors, "fetch", { set: mockSetError });
     Object.defineProperty(mockStore, "appConfig", { set: mockSetConfig });
     return { store: mockStore };
