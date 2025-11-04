@@ -5,9 +5,9 @@
     import { resolve } from "$app/paths";
 </script>
 
-<Navbar rounded class="navbar" color="form">
+<Navbar rounded class="navbar" color="form" fluid="true">
     <NavBrand href={resolve('/')}>
-        <span class="self-center text-xl font-bold whitespace-nowrap text-gray-900 dark:text-white">
+        <span class="text-xl font-bold whitespace-nowrap text-primary-600 dark:text-white pb-2 ">
             {store.appConfig?.appTitle || "EasyMap"}
         </span>
     </NavBrand>

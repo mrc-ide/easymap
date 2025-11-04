@@ -14,7 +14,7 @@
 			 bind:open={isOpen}
 			 modal={false}
 			 size="md"
-			 class="absolute top-20 left-20 m-0 z-9999"
+			 class="absolute top-20 left-24 m-0 z-9999"
 			 onclose={handleClose}>
 	<Accordion>
 		<AccordionItem open>
