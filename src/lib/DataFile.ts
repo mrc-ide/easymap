@@ -10,7 +10,7 @@ export class DataFile {
         try {
             const workbook = XLSX.read(buffer, { type: "buffer" });
             if (workbook.SheetNames.length > 1) {
-                this._loadWarning = "This file has multiple sheets";
+                this._loadWarning = "This file has multiple sheets, using the first one";
             }
             const firstSheetName = workbook.SheetNames[0];
             const sheet = workbook.Sheets[firstSheetName];
