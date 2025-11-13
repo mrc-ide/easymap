@@ -79,7 +79,7 @@ describe("LoadFile", () => {
         const input = getInput();
         uploadTestFile(input, "multiple_sheets_data.xlsx");
         await waitFor(() => {
-            expect(screen.getByText(/File load warning: This file has multiple sheets/));
+            expect(screen.getByText(/File load warning: This file has multiple sheets, using the first one/));
         });
     });
 

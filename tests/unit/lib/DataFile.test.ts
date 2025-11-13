@@ -16,7 +16,9 @@ describe("DataFile", () => {
     });
 
     test("sets loadWarning when file has multiple sheets", () => {
-        expect(getDataFileForTestFile("multiple_sheets_data.xlsx").loadWarning).toBe("This file has multiple sheets");
+        expect(getDataFileForTestFile("multiple_sheets_data.xlsx").loadWarning).toBe(
+            "This file has multiple sheets, using the first one"
+        );
     });
 
     test("sets loadError when file has no data rows", () => {
