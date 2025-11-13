@@ -3,18 +3,14 @@ import { ProjectDialog } from "./types";
 import type { DataFile } from "$lib/DataFile";
 import { SvelteSet } from "svelte/reactivity";
 
-export interface StoreErrors {
+export interface StoreProblems {
     fetch?: string;
     loadFile?: string;
 }
 
-export interface StoreWarnings {
-    loadFile?: string;
-}
-
 export interface Store {
-    errors: StoreErrors;
-    warnings: StoreWarnings;
+    errors: StoreProblems;
+    warnings: StoreProblems;
     appConfig: null | AppConfig;
     openProjectDialog: null | ProjectDialog;
     enabledProjectDialogs: Set<ProjectDialog>;
