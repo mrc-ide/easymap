@@ -2,18 +2,18 @@
     import { page } from "$app/state";
     import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from "flowbite-svelte";
     import { store } from "../store.svelte.js";
-    import { base } from "$app/paths";
+    import { resolve } from "$app/paths";
 </script>
 
-<Navbar rounded class="navbar" color="form" let:hidden let:toggle>
-    <NavBrand href="{base}/">
-        <span class="self-center text-xl font-bold whitespace-nowrap text-gray-900 dark:text-white">
+<Navbar rounded class="navbar" color="form" fluid="true">
+    <NavBrand href={resolve("/")}>
+        <span class="text-primary-600 pb-2 text-xl font-bold whitespace-nowrap dark:text-white">
             {store.appConfig?.appTitle || "EasyMap"}
         </span>
     </NavBrand>
-    <NavHamburger on:click={toggle} />
-    <NavUl activeUrl={page.url.pathname} {hidden}>
-        <NavLi href="{base}/">Home</NavLi>
-        <NavLi href="{base}/about">About</NavLi>
+    <NavHamburger />
+    <NavUl activeUrl={page.url.pathname}>
+        <NavLi href={resolve("/")}>Home</NavLi>
+        <NavLi href={resolve("/about")}>About</NavLi>
     </NavUl>
 </Navbar>
