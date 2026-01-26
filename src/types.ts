@@ -18,12 +18,10 @@ export enum CountryIdType {
 }
 
 export interface SingleCountrySettings {
-    settingsType: CountrySettingsType.SingleCountry,
     countryISO: string | null
 }
 
 export interface MultiCountrySettings {
-    settingsType: CountrySettingsType.MultiCountry,
     countryIdType: CountryIdType,
     countryIdColumn: string | null
 }

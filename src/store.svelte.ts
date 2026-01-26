@@ -15,6 +15,7 @@ export interface Store {
     openProjectDialog: null | ProjectDialog;
     enabledProjectDialogs: Set<ProjectDialog>;
     dataFile: null | DataFile;
+    countrySettingsType: CountrySettingsType;
     countrySettings: CountrySettings;
     regionSettings: RegionSettings;
 }
@@ -26,8 +27,8 @@ export const store: Store = $state({
     openProjectDialog: ProjectDialog.Setup,
     enabledProjectDialogs: new SvelteSet<ProjectDialog>([ProjectDialog.Setup]),
     dataFile: null,
+    countrySettingsType: CountrySettingsType.SingleCountry,
     countrySettings: {
-        settingsType: CountrySettingsType.SingleCountry,
         countryISO: null
     },
     regionSettings: {
