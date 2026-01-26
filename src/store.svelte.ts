@@ -1,7 +1,7 @@
-import type { AppConfig } from "./types";
-import { ProjectDialog } from "./types";
-import type { DataFile } from "$lib/DataFile";
-import { SvelteSet } from "svelte/reactivity";
+import type { AppConfig, CountrySettings, RegionSettings } from './types';
+import { CountrySettingsType, ProjectDialog, RegionAdminLevel, RegionIdType } from './types';
+import type { DataFile } from '$lib/DataFile';
+import { SvelteSet } from 'svelte/reactivity';
 
 export interface StoreProblems {
     fetch?: string;
@@ -15,6 +15,8 @@ export interface Store {
     openProjectDialog: null | ProjectDialog;
     enabledProjectDialogs: Set<ProjectDialog>;
     dataFile: null | DataFile;
+    countrySettings: CountrySettings;
+    regionSettings: RegionSettings;
 }
 
 export const store: Store = $state({
@@ -23,5 +25,14 @@ export const store: Store = $state({
     appConfig: null,
     openProjectDialog: ProjectDialog.Setup,
     enabledProjectDialogs: new SvelteSet<ProjectDialog>([ProjectDialog.Setup]),
-    dataFile: null
+    dataFile: null,
+    countrySettings: {
+        settingsType: CountrySettingsType.SingleCountry,
+        countryISO: null
+    },
+    regionSettings: {
+        adminLevel: RegionAdminLevel.Admin1,
+        regionIdType: RegionIdType.Name,
+        regionIdColumn: null
+    }
 });
