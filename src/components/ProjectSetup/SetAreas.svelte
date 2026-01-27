@@ -13,12 +13,10 @@ const countryIdTypeItems = [
 	{ name: "ISO3", value: CountryIdType.ISO3 }
 ];
 
-// TODO: replace this with country metadata fetched from grout - run locally for dev
-const countryItems = [
-	{name: "France", value: "FRA"},
-	{name: "Thailand", value: "THA"},
-	{name: "Venezuela", value: "VEN"}
-];
+const countryItems = $derived(store.countries.map((c) => ({
+	name: c.name,
+	value: c.id
+})));
 
 // When select new country settings type, need to refresh settings object to default for type
 let countrySettingsType = {
@@ -58,7 +56,8 @@ let countrySettingsType = {
 	</Radio>
 </div>
 {#if countrySettingsType.value === CountrySettingsType.SingleCountry}
-single country
+  <Label for="country" class="mt-4 py-2">Country column</Label>
+	<Select id="country" items={countryItems} bind:value={store.countrySettings.countryISO} />
 {:else}
   <Label for="country-id-column" class="mt-4 py-2">Country column</Label>
   <Select id="country-id-column" items={dataFileColumnItems} bind:value={store.countrySettings.countryIdColumn} />
@@ -67,4 +66,4 @@ single country
 	<Select id="country-id-column" items={countryIdTypeItems} bind:value={store.countrySettings.countryIdType} />
 {/if}
 
-<div>{JSON.stringify(store.countrySettings)}</div>
+<div class="mt-6">{JSON.stringify(store.countrySettings)}</div>
