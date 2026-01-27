@@ -8,3 +8,9 @@ export const doFetch = async (url: string) => {
 	const json = await response.json();
 	return {ok: response.ok, json}
 }
+
+// convert an enum with string values into a list of items for a select item
+// NB this will not work for enum with numeric values as entries are duplicated
+export const stringEnumToSelectItems = (senum: Object) => {
+	return Object.entries(senum).map((e) => ({name: e[0], value: e[1]}));
+}

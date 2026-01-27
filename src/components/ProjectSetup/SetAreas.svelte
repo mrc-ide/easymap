@@ -1,17 +1,21 @@
 <script lang="ts">
 import { Label, Radio, Select } from 'flowbite-svelte';
 import { store } from '../../store.svelte.ts';
-import { CountryIdType, CountrySettingsType, type MultiCountrySettings, type SingleCountrySettings } from '../../types.ts';
+import {
+	CountryIdType,
+	CountrySettingsType,
+	type MultiCountrySettings,
+	RegionAdminLevel, RegionIdType,
+	type SingleCountrySettings
+} from '../../types.ts';
+import { stringEnumToSelectItems } from '$lib/utils';
 
 const dataFileColumnItems = $derived(store.dataFile.columns.map((s) => ({
 	name: s,
 	value: s
 })));
 
-const countryIdTypeItems = [
-	{ name: "Name", value: CountryIdType.Name },
-	{ name: "ISO3", value: CountryIdType.ISO3 }
-];
+const countryIdTypeItems = stringEnumToSelectItems(CountryIdType);
 
 const countryItems = $derived(store.countries.map((c) => ({
 	name: c.name,
@@ -40,6 +44,9 @@ let countrySettingsType = {
 	}
 }
 
+const adminLevelItems = stringEnumToSelectItems(RegionAdminLevel);
+const regionIdTypeItems = stringEnumToSelectItems(RegionIdType);
+
 </script>
 <Label for="country-settings-type" class="pb-2">The file contains areas for</Label>
 <div class="flex">
@@ -62,8 +69,18 @@ let countrySettingsType = {
   <Label for="country-id-column" class="mt-4 py-2">Country column</Label>
   <Select id="country-id-column" items={dataFileColumnItems} bind:value={store.countrySettings.countryIdColumn} />
 
-	<Label for="country-id-column" class="mt-4 py-2">Countries are identified by </Label>
-	<Select id="country-id-column" items={countryIdTypeItems} bind:value={store.countrySettings.countryIdType} />
+	<Label for="country-id-type" class="mt-4 py-2">Countries are identified by </Label>
+	<Select id="country-id-type" items={countryIdTypeItems} bind:value={store.countrySettings.countryIdType} />
 {/if}
+<Label for="admin-level" class="mt-4 py-2">Region admin level</Label>
+<Select id="admin-level" items={adminLevelItems} bind:value={store.regionSettings.adminLevel} />
 
+<Label for="region-id-column" class="mt-4 py-2">Region column</Label>
+<Select id="region-id-column" items={dataFileColumnItems} bind:value={store.regionSettings.regionIdColumn} />
+
+<Label for="region-id-type" class="mt-4 py-2">Regions are identified by </Label>
+<Select id="region-id-type" items={regionIdTypeItems} bind:value={store.regionSettings.regionIdType} />
+
+<!-- This is here temporarily to confirm that setting have been saved -->
 <div class="mt-6">{JSON.stringify(store.countrySettings)}</div>
+<div class="mt-6">{JSON.stringify(store.regionSettings)}</div>

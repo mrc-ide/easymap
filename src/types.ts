@@ -15,8 +15,8 @@ export enum CountrySettingsType {
 }
 
 export enum CountryIdType {
-    ISO3,
-    Name
+    ISO3 = "iso3",
+    Name = "name"
 }
 
 export interface SingleCountrySettings {
@@ -31,13 +31,13 @@ export interface MultiCountrySettings {
 export type CountrySettings = SingleCountrySettings | MultiCountrySettings;
 
 export enum RegionAdminLevel {
-    Admin1,
-    Admin2
+    Admin1 = "admin1",
+    Admin2 = "admin2"
 }
 
 export enum RegionIdType {
-    GADM,
-    Name
+    GADM = "gadm",
+    Name = "name"
 }
 
 export interface RegionSettings {
