@@ -1,5 +1,7 @@
 export interface AppConfig {
     appTitle: string;
+    groutUrl: string;
+    groutDataset: string;
 }
 
 export enum ProjectDialog {

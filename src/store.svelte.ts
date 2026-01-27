@@ -8,10 +8,23 @@ export interface StoreProblems {
     loadFile?: string;
 }
 
+export interface LatLng {
+    lat: number,
+    lng: number
+}
+
 export interface Store {
     errors: StoreProblems;
     warnings: StoreProblems;
     appConfig: null | AppConfig;
+    countries: {
+        id: string,
+        name: string,
+        bounds: {
+            min: LatLng,
+            max: LatLng
+        }
+    }[];
     openProjectDialog: null | ProjectDialog;
     enabledProjectDialogs: Set<ProjectDialog>;
     dataFile: null | DataFile;
