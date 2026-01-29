@@ -1,0 +1,18 @@
+Country,Region,Prevalence,Incidence
+United Kingdom,England,0.231,0.012
+United Kingdom,Northern Ireland,0.154,0.022
+United Kingdom,Scotland,0.243,0.014
+United Kingdom,Wales,0.126,0.087
+France,Auvergne-Rhône-Alpes,0.113,0.032
+France,Bourgogne-Franche-Comté,0.205,0.012
+France,Bretagne,0.276,0.062
+France,Centre-Val de Loire,0.112,0.001
+France,Corse,0.097,0.032
+France,Grand Est,0.215,0.087
+France,Hauts-de-France,0.226,0.053
+France,Île-de-France,0.159,0.022
+France,Normandie,0.298,0.019
+France,Nouvelle-Aquitaine,0.102,0.033
+France,Occitanie,0.079,0.017
+France,Pays de la Loire,0.091,0.023
+France,Provence-Alpes-Côte d'Azur,0.189,0.061

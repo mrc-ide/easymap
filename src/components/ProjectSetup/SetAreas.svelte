@@ -80,7 +80,3 @@ const regionIdTypeItems = stringEnumToSelectItems(RegionIdType);
 
 <Label for="region-id-type" class="mt-4 py-2">Regions are identified by </Label>
 <Select id="region-id-type" items={regionIdTypeItems} bind:value={store.regionSettings.regionIdType} />
-
-<!-- This is here temporarily to confirm that setting have been saved -->
-<div class="mt-6">{JSON.stringify(store.countrySettings)}</div>
-<div class="mt-6">{JSON.stringify(store.regionSettings)}</div>
