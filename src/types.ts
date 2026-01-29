@@ -9,6 +9,11 @@ export enum ProjectDialog {
     Download
 }
 
+export enum ProjectSetupAccItem {
+    OpenFile,
+    SetAreas
+}
+
 export enum CountrySettingsType {
     SingleCountry,
     MultiCountry
