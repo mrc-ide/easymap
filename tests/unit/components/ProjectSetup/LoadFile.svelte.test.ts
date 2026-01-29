@@ -4,8 +4,9 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/svelte";
 import { getTestFile } from "../../utils";
 import type { DataFile } from "$lib/DataFile";
 
-let { mockStore } = vi.hoisted(() => ({
-    mockStore: {}
+let { mockStore, mockUpdateSettingsForNewDataFile } = vi.hoisted(() => ({
+    mockStore: {},
+    mockUpdateSettingsForNewDataFile: vi.fn()
 }));
 
 describe("LoadFile", () => {
@@ -16,7 +17,10 @@ describe("LoadFile", () => {
                 warnings: {},
                 dataFile: null
             };
-            return { store: mockStore };
+            return {
+                store: mockStore,
+                updateSettingsForNewDataFile: mockUpdateSettingsForNewDataFile
+            };
         });
     });
 
@@ -71,6 +75,15 @@ describe("LoadFile", () => {
         await expectExampleDataColumns();
         await waitFor(() => {
             expect(screen.getByText(/Loaded file with columns: region, value/)).toBeVisible();
+        });
+    });
+
+    test("calls updateSettingsForNewDataFile", async () => {
+        render(LoadFile);
+        const input = getInput();
+        uploadTestFile(input, "example_data.xls");
+        await waitFor(() => {
+            expect(mockUpdateSettingsForNewDataFile).toHaveBeenCalled();
         });
     });
 

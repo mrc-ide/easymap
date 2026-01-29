@@ -33,7 +33,7 @@
                 <Button disabled={!store.dataFile} onclick={() => openAccItems[ProjectSetupAccItem.SetAreas] = true} class="justify-self-end">Next</Button>
             </div>
         </AccordionItem>
-        <ConditionalAccordionItem disabled={!store.dataFile} header="2. Set Areas" bind:open={openAccItems[ProjectSetupAccItem.SetAreas]}>
+        <ConditionalAccordionItem disabled={!store.dataFile} header="2. Set areas" bind:open={openAccItems[ProjectSetupAccItem.SetAreas]}>
             <SetAreas />
         </ConditionalAccordionItem>
     </Accordion>
