@@ -63,7 +63,7 @@ const regionIdTypeItems = stringEnumToSelectItems(RegionIdType);
 	</Radio>
 </div>
 {#if countrySettingsType.value === CountrySettingsType.SingleCountry}
-  <Label for="country" class="mt-4 py-2">Country column</Label>
+  <Label for="country" class="mt-4 py-2">Country</Label>
 	<Select id="country" items={countryItems} bind:value={store.countrySettings.countryISO} />
 {:else}
   <Label for="country-id-column" class="mt-4 py-2">Country column</Label>
