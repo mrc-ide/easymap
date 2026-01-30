@@ -64,10 +64,14 @@ const regionIdTypeItems = stringEnumToSelectItems(RegionIdType);
 </div>
 {#if countrySettingsType.value === CountrySettingsType.SingleCountry}
   <Label for="country" class="mt-4 py-2">Country</Label>
-	<Select id="country" items={countryItems} bind:value={store.countrySettings.countryISO} />
+	<Select id="country" items={countryItems} bind:value={
+	  () => store.countrySettings.countryISO || "",  /* Need to map null to empty string to show placeholder option */
+	  (v) => store.countrySettings.countryISO = v} />
 {:else}
   <Label for="country-id-column" class="mt-4 py-2">Country column</Label>
-  <Select id="country-id-column" items={dataFileColumnItems} bind:value={store.countrySettings.countryIdColumn} />
+  <Select id="country-id-column" items={dataFileColumnItems} bind:value={
+    () => store.countrySettings.countryIdColumn || "",
+	  (v) => store.countrySettings.countryIdColumn = v} />
 
 	<Label for="country-id-type" class="mt-4 py-2">Countries are identified by </Label>
 	<Select id="country-id-type" items={countryIdTypeItems} bind:value={store.countrySettings.countryIdType} />
@@ -76,7 +80,9 @@ const regionIdTypeItems = stringEnumToSelectItems(RegionIdType);
 <Select id="admin-level" items={adminLevelItems} bind:value={store.regionSettings.adminLevel} />
 
 <Label for="region-id-column" class="mt-4 py-2">Region column</Label>
-<Select id="region-id-column" items={dataFileColumnItems} bind:value={store.regionSettings.regionIdColumn} />
+<Select id="region-id-column" items={dataFileColumnItems} bind:value={
+	  () => store.regionSettings.regionIdColumn || "",
+	  (v) => store.regionSettings.regionIdColumn = v} />
 
 <Label for="region-id-type" class="mt-4 py-2">Regions are identified by </Label>
 <Select id="region-id-type" items={regionIdTypeItems} bind:value={store.regionSettings.regionIdType} />
