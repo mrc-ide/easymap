@@ -51,4 +51,59 @@ test.describe("Project setup", () => {
         await loadFile(page, "no_example_data.csv");
         await expect(page.getByText(/File load error: No data rows in file/)).toBeVisible();
     });
+
+    test("can set area config", async ({ page }) => {
+        await loadFile(page, "multi_country_name.csv");
+        // Click Next button
+        const nextButton = page.getByText("Next");
+        await expect(nextButton).toBeEnabled();
+        await nextButton.click();
+        // Can see default is single country
+        await expect(page.getByLabel(/A single country/)).toBeChecked();
+        const multiCountries = await page.getByLabel(/Multiple countries/);
+        await expect(multiCountries).not.toBeChecked();
+        // Can see country select values (and not controls for multi country)
+        const countrySelect = page.getByLabel("Country", { exact: true });
+        const countryOptions = countrySelect.getByRole("option");
+        await expect(countryOptions.nth(0)).toHaveText("Choose option ...");
+        await expect(countryOptions.nth(1)).toHaveText("Aruba");
+        const countryColumnSelect = page.getByLabel(/Country column/);
+        await expect(countryColumnSelect).not.toBeVisible();
+        const countryIdTypeSelect = page.getByLabel(/Countries are identified by/);
+        await expect(countryIdTypeSelect).not.toBeVisible();
+
+        // Can switch to multi country and see country and column and country id type controls and options
+        await multiCountries.click();
+        await expect(countrySelect).not.toBeVisible();
+        await expect(countryColumnSelect).toBeVisible();
+        const countryColumnOptions = countryColumnSelect.getByRole("option");
+        await expect(countryColumnOptions).toHaveCount(5);
+        await expect(countryColumnOptions.nth(0)).toHaveText("Choose option ...");
+        await expect(countryColumnOptions.nth(1)).toHaveText("Country");
+        await expect(countryColumnOptions.nth(4)).toHaveText("Incidence");
+        await expect(countryIdTypeSelect).toBeVisible();
+        await expect(countryIdTypeSelect).toHaveValue("name");
+        const countryIdTypeOptions = countryIdTypeSelect.getByRole("option");
+        await expect(countryIdTypeOptions.nth(1)).toHaveText("ISO3");
+        await expect(countryIdTypeOptions.nth(2)).toHaveText("Name");
+
+        // Can see Region controls and options
+        const adminLevelSelect = page.getByLabel(/Region admin level/);
+        await expect(adminLevelSelect).toBeVisible();
+        await expect(adminLevelSelect).toHaveValue("admin1");
+        const adminLevelOptions = adminLevelSelect.getByRole("option");
+        await expect(adminLevelOptions.nth(1)).toHaveText("Admin1");
+        await expect(adminLevelOptions.nth(2)).toHaveText("Admin2");
+        const regionColumnSelect = page.getByLabel(/Region column/);
+        await expect(regionColumnSelect).toBeVisible();
+        const regionColumnOptions = regionColumnSelect.getByRole("option");
+        await expect(regionColumnOptions.nth(1)).toHaveText("Country");
+        await expect(regionColumnOptions.nth(4)).toHaveText("Incidence");
+        const regionIdTypeSelect = page.getByLabel(/Regions are identified by/);
+        await expect(regionIdTypeSelect).toBeVisible();
+        await expect(regionIdTypeSelect).toHaveValue("name");
+        const regionIdTypeOptions = regionIdTypeSelect.getByRole("option");
+        await expect(regionIdTypeOptions.nth(1)).toHaveText("GADM");
+        await expect(regionIdTypeOptions.nth(2)).toHaveText("Name");
+    });
 });
