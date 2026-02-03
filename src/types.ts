@@ -25,12 +25,12 @@ export enum CountryIdType {
 }
 
 export interface SingleCountrySettings {
-    countryISO: string | null
+    countryISO: string | null;
 }
 
 export interface MultiCountrySettings {
-    countryIdType: CountryIdType,
-    countryIdColumn: string | null
+    countryIdType: CountryIdType;
+    countryIdColumn: string | null;
 }
 
 export type CountrySettings = SingleCountrySettings | MultiCountrySettings;
@@ -46,7 +46,7 @@ export enum RegionIdType {
 }
 
 export interface RegionSettings {
-    adminLevel: RegionAdminLevel,
-    regionIdType: RegionIdType,
-    regionIdColumn: string | null
+    adminLevel: RegionAdminLevel;
+    regionIdType: RegionIdType;
+    regionIdColumn: string | null;
 }

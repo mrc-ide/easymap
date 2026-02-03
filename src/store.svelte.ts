@@ -1,7 +1,7 @@
-import type { AppConfig, CountrySettings, MultiCountrySettings, RegionSettings } from './types';
-import { CountrySettingsType, ProjectDialog, RegionAdminLevel, RegionIdType } from './types';
-import type { DataFile } from '$lib/DataFile';
-import { SvelteSet } from 'svelte/reactivity';
+import type { AppConfig, CountrySettings, MultiCountrySettings, RegionSettings } from "./types";
+import { CountrySettingsType, ProjectDialog, RegionAdminLevel, RegionIdType } from "./types";
+import type { DataFile } from "$lib/DataFile";
+import { SvelteSet } from "svelte/reactivity";
 
 export interface StoreProblems {
     fetch?: string;
@@ -9,8 +9,8 @@ export interface StoreProblems {
 }
 
 export interface LatLng {
-    lat: number,
-    lng: number
+    lat: number;
+    lng: number;
 }
 
 export interface Store {
@@ -18,12 +18,12 @@ export interface Store {
     warnings: StoreProblems;
     appConfig: null | AppConfig;
     countries: {
-        id: string,
-        name: string,
+        id: string;
+        name: string;
         bounds: {
-            min: LatLng,
-            max: LatLng
-        }
+            min: LatLng;
+            max: LatLng;
+        };
     }[];
     openProjectDialog: null | ProjectDialog;
     enabledProjectDialogs: Set<ProjectDialog>;
@@ -68,4 +68,4 @@ export const updateSettingsForNewDataFile = () => {
     if (regionIdCol && !newColumns?.includes(regionIdCol)) {
         store.regionSettings.regionIdColumn = null;
     }
-}
+};

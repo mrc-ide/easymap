@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Fileupload, Label, Helper } from "flowbite-svelte";
     import { DataFile } from "$lib/DataFile";
-    import { store, updateSettingsForNewDataFile } from '../../store.svelte';
+    import { store, updateSettingsForNewDataFile } from "../../store.svelte";
 
     const loadFile = async (e) => {
         const file = e.target.files[0];

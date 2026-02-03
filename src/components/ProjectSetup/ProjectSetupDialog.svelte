@@ -3,8 +3,8 @@
     import { store } from "../../store.svelte";
     import { ProjectDialog, ProjectSetupAccItem } from "../../types";
     import LoadFile from "./LoadFile.svelte";
-    import SetAreas from './SetAreas.svelte';
-    import ConditionalAccordionItem from '../ConditionalAccordionItem.svelte';
+    import SetAreas from "./SetAreas.svelte";
+    import ConditionalAccordionItem from "../ConditionalAccordionItem.svelte";
 
     let isOpen = $derived(store.openProjectDialog == ProjectDialog.Setup);
     const openAccItems = $state({
@@ -30,13 +30,19 @@
             {#snippet header()}1. Open file{/snippet}
             <div class="grid">
                 <LoadFile />
-                <Button disabled={!store.dataFile} onclick={() => openAccItems[ProjectSetupAccItem.SetAreas] = true} class="justify-self-end">Next</Button>
+                <Button
+                    disabled={!store.dataFile}
+                    onclick={() => (openAccItems[ProjectSetupAccItem.SetAreas] = true)}
+                    class="justify-self-end">Next</Button
+                >
             </div>
         </AccordionItem>
-        <ConditionalAccordionItem disabled={!store.dataFile} header="2. Set areas" bind:open={openAccItems[ProjectSetupAccItem.SetAreas]}>
+        <ConditionalAccordionItem
+            disabled={!store.dataFile}
+            title="2. Set areas"
+            bind:open={openAccItems[ProjectSetupAccItem.SetAreas]}
+        >
             <SetAreas />
         </ConditionalAccordionItem>
     </Accordion>
 </Modal>
-
-

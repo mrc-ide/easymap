@@ -4,6 +4,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/svelte";
 import { getTestFile } from "../../utils";
 import type { DataFile } from "$lib/DataFile";
 
+/* eslint-disable-next-line prefer-const */
 let { mockStore, mockUpdateSettingsForNewDataFile } = vi.hoisted(() => ({
     mockStore: {},
     mockUpdateSettingsForNewDataFile: vi.fn()

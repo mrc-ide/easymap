@@ -2,7 +2,7 @@ import { describe, test, expect, beforeEach, afterEach, vi } from "vitest";
 import { http, HttpResponse } from "msw";
 import { setupServer } from "msw/node";
 import { init } from "../../src/hooks.client";
-import { groutSuccessResponse } from './utils';
+import { groutSuccessResponse } from "./utils";
 
 const mockConfig = {
     appTitle: "Test Title",
@@ -11,7 +11,7 @@ const mockConfig = {
 };
 
 const mockCountries = [{ id: "AFG", name: "Afghanistan" }];
-const configHandler =  http.get("./easymap.config.json", () => {
+const configHandler = http.get("./easymap.config.json", () => {
     return HttpResponse.json(mockConfig);
 });
 
@@ -34,7 +34,7 @@ vi.mock("../../src/store.svelte.ts", () => {
     };
     Object.defineProperty(mockStore.errors, "fetch", { set: mockSetError });
     Object.defineProperty(mockStore, "appConfig", { set: mockSetConfig, get: () => mockConfig });
-    Object.defineProperty(mockStore, "countries", {set: mockSetCountries});
+    Object.defineProperty(mockStore, "countries", { set: mockSetCountries });
     return { store: mockStore };
 });
 
@@ -71,14 +71,16 @@ describe("Client hooks", () => {
 
     test("init does not set countries if fetch fails", async () => {
         server.use(
-          configHandler,
-          http.get("https://mock-grout/region-metadata/mock-dataset/admin0", () => {
-              return HttpResponse("oh no", { status: 500 });
-          })
+            configHandler,
+            http.get("https://mock-grout/region-metadata/mock-dataset/admin0", () => {
+                return HttpResponse("oh no", { status: 500 });
+            })
         );
         await init();
         expect(mockSetConfig).toHaveBeenCalled();
-        expect(mockSetError).toHaveBeenCalledWith("Error fetching from https://mock-grout/region-metadata/mock-dataset/admin0");
+        expect(mockSetError).toHaveBeenCalledWith(
+            "Error fetching from https://mock-grout/region-metadata/mock-dataset/admin0"
+        );
         expect(mockSetCountries).not.toHaveBeenCalled();
     });
 });
