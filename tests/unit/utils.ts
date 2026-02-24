@@ -23,3 +23,11 @@ export const getTestFile = (fileName: string): File => {
     };
     return file;
 };
+
+export const groutSuccessResponse = (data: Array<object> | object | string) => {
+    return {
+        status: "success",
+        errors: null,
+        data
+    };
+};

@@ -1,3 +1,5 @@
 {
-    "appTitle": "EasyMap"
+    "appTitle": "EasyMap",
+    "groutUrl": "https://mrcdata.dide.ic.ac.uk/grout",
+    "groutDataset": "gadm41"
 }

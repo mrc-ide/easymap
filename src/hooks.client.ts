@@ -1,13 +1,15 @@
 import type { ClientInit } from "@sveltejs/kit";
 import { store } from "./store.svelte";
 import type { AppConfig } from "./types";
+import { doFetch } from "$lib/utils";
 
 export const init: ClientInit = async () => {
-    // TODO: consider fetch wrapper with generic error handling
-    const response = await fetch("./easymap.config.json");
-    if (!response.ok) {
-        store.errors.fetch = "Error fetching app config";
-    } else {
-        store.appConfig = (await response.json()) as AppConfig;
+    const configRes = await doFetch("./easymap.config.json");
+    if (!configRes.ok) return;
+    store.appConfig = configRes.json as AppConfig;
+    const { groutUrl, groutDataset } = store.appConfig;
+    const countriesRes = await doFetch(`${groutUrl}/region-metadata/${groutDataset}/admin0`);
+    if (countriesRes.ok) {
+        store.countries = countriesRes.json.data;
     }
 };
